@@ -18,22 +18,23 @@ struct rrCoordenada{
      string rrTipoArsenal;     
      struct rrCoordenada *izq, *der;
 };
+
 typedef struct rrCoordenada *ABB;
 ABB arbol           = NULL;        // creacion del Arbol Binario de Coordenadas
 int arbolNroNodos   = 0;           // numero de nodos 
 int arbolCapBelica  = 0;           // suma de capacidad belica
 int const TKError   =-1;           // Token de Error
 int const TKBomba   =-2;           // Token de Bomba 
-string const ALFA = "abc.";        // Tipo Arsenal
+string const ALFA = "abcdt.";        // Tipo Arsenal
 
 
-int mtBOMBIA_I[3][4]=    {// matriz de transicion
-                         {1,         2,         TKError,     TKError},
-                         {1,         2,         TKError,     TKError},
-                         {TKError,   TKError,   2,           TKBomba}
+int mtBOMBIA_I[3][6]=    {// matriz de transicion
+                         {1,         TKError,     TKError,           1,          1,   TKError},
+                         {TKError,         2,           2,     TKError,     TKError,  TKError},
+                         {TKError,         2,           2,     TKError,     TKError,  TKBomba}
                          }; 
 
-int getIndexAlfabeto(char c)
+int rrGetIndexAlfabeto(char c)
 {
     int index = ALFA.find(c);
     if(index < ALFA.length())
@@ -41,12 +42,12 @@ int getIndexAlfabeto(char c)
     return TKError;    
 }
 
-string aplicaBOMBIA_I(string rrTipoArsenal) 
+string rrAplicaBOMBIA_I(string rrTipoArsenal) 
 {        
     int q=0, l=0;
     for (auto &&c : rrTipoArsenal+"." ) // caracter de fin de cadena
     {
-          l = getIndexAlfabeto(c);
+          l = rrGetIndexAlfabeto(c);
           q = mtBOMBIA_I[q][l];
           //cout<< c << " " << q <<","<< l <<endl;
           if(q == TKError || q > 3)
@@ -141,7 +142,7 @@ void verArbol(ABB arbol, int n)
      rrSetTextColor(textColorWhite);
      cout << " { " << arbol->rrTipoArsenal;
      rrSetTextColor(textColorRed);
-     cout << "  " << aplicaBOMBIA_I(arbol->rrTipoArsenal);
+     cout << "  " << rrAplicaBOMBIA_I(arbol->rrTipoArsenal);
      rrSetTextColor(textColorWhite);
      cout << " }"<< endl;
 
