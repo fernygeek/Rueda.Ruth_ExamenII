@@ -1,0 +1,11 @@
+GeoPos,	CapBelica
+GPS08,	aaabbct
+GPS01,	ab
+GPS00,	aaabbcd
+GPS01,	ab
+GPS08,	aaabbct
+GPS07,	act
+GPS03,	ac
+GPS00,	aaabbcd
+GPS00,	aaabbcd
+GPS01,	ab
