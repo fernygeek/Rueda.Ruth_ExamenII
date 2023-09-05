@@ -23,7 +23,7 @@ string rrDelLeft(const string &s)
 */
 string rrDelRight(const string &s)
 {
-    size_t end = s.find_last_not_of(WHITESPACE)
+    size_t end = s.find_last_not_of(WHITESPACE);
     return (end == string::npos) ? "" : s.substr(0, end + 1);
 }
 /**
